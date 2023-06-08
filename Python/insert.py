@@ -1,5 +1,8 @@
-from creat import cur,con #호출
-    
+import cx_Oracle as oci
+
+con = oci.connect("scott/tiger@localhost:1521/orcl") #DB연결
+cur = con.cursor() #커서 생성
+
 while True:
     val_id= input("ID 를 입력하세요(2자리 정수)> ")
     val_name= input("이름을 입력하세요 > ")
@@ -11,7 +14,7 @@ while True:
 #print(cur.execute("SELECT * FROM TEST").fetchall()) #테이블 확인 
 
 #commit
-con.commit
+con.commit()
 
 #db 종료
 con.close()
